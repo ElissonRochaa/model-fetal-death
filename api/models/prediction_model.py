@@ -1,13 +1,12 @@
+from xgboost import XGBClassifier  # ou XGBRegressor, dependendo do seu modelo
+from datetime import datetime
 import pickle
+from api.models.custom_model import CustomModel
 
-def predict_test(X_test):
-    with open('api/models/modelo_xgboost.pickle', 'rb') as f:
-        data = pickle.load(f)
+def predict_test(X_test, custom_model):
 
-    modelo = data['modelo']
-
-    y_pred = modelo.predict(X_test)
-    y_proba = modelo.predict_proba(X_test)
+    y_pred = custom_model.model.predict(X_test)
+    y_proba = custom_model.model.predict_proba(X_test)
     result = {
             'prediction': int(y_pred[0]), #predição da classe alvo
             'probability': {
@@ -16,3 +15,10 @@ def predict_test(X_test):
             }
         }
     return result
+
+# Função para carregar o modelo do arquivo pickle
+def load_model():
+
+    with open("api/models/fetal_death_model.pkl", "rb") as f:
+        my_class = pickle.load(f)
+    return my_class
