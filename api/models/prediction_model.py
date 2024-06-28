@@ -19,6 +19,6 @@ def predict_test(X_test, custom_model):
 # Função para carregar o modelo do arquivo pickle
 def load_model():
 
-    with open("api/models/congenital_syphilis_model.pkl", "rb") as f:
+    with open("api/models/fetal_death_model.pkl", "rb") as f:
         my_class = pickle.load(f)
     return my_class
