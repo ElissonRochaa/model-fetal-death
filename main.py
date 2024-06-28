@@ -4,7 +4,7 @@ from api.models.custom_model import CustomModel
 
 # # Parametros para o eureka
 # eureka_server = 'http://54.91.53.248:8761/eureka'
-# app_name = 'modelo-morte-fetal'
+# app_name = 'model-congenital-syphilis-version1'
 # instance_host = '54.91.53.248'
 instance_port = 5001
 
